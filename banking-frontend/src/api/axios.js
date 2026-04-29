@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://banking-system-production-9286.up.railway.app",
+  baseURL: "https://bankingsystem-rfqy.onrender.com",
 });
 
 API.interceptors.request.use((config) => {
