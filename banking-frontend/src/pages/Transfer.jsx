@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import API from "../api/axios";
 import Navbar from "../components/Navbar";
 import { toast } from "sonner";
 
@@ -10,17 +10,11 @@ const Transfer = () => {
 
   const handleTransfer = async () => {
     try {
-      const token = localStorage.getItem("token");
 
-      const res = await axios.post(
-        `http://localhost:8080/api/user/transfer?receiverEmail=${receiverEmail}&amount=${amount}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await API.post(
+  `/api/user/transfer?receiverEmail=${receiverEmail}&amount=${amount}`
+);
+      
 
       toast.success("Transfer Successful");
       setReceiverEmail("");

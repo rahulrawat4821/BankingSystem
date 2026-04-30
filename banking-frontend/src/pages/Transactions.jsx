@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api/axios";
 import Navbar from "../components/Navbar";
 
 const Transactions = () => {
@@ -8,16 +8,8 @@ const Transactions = () => {
 
   const fetchTransactions = async () => {
     try {
-      const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        "http://localhost:8080/api/user/transactions",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+     const res = await API.get("/api/user/transactions");
 
       setTransactions(res.data);
     } catch (err) {
