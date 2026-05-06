@@ -12,4 +12,8 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
+setInterval(() => {
+  fetch("https://bankingsystem-rfqy.onrender.com/api/auth/health").catch(() => {});
+}, 600000);
+
 export default API;
